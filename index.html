@@ -39,8 +39,15 @@
         .hero .protagonizada {
             color: #fff;
             font-size: 1.3rem;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             font-weight: bold;
+        }
+
+        .hero .direccion {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
         }
 
         .hero .sinopsis {
@@ -91,7 +98,6 @@
         .movie-card {
             width: 350px;
             position: relative;
-            cursor: pointer;
         }
 
         .movie-card .afiche-container {
@@ -106,56 +112,25 @@
             height: 100%;
             object-fit: cover;
             border-radius: 15px;
-            transition: transform 0.4s ease, filter 0.4s ease;
-        }
-
-        .movie-card:hover .afiche-container img {
-            transform: scale(1.1);
-            filter: blur(3px) brightness(0.25);
         }
 
         .movie-card .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            display: none;
         }
 
-        .movie-card:hover .overlay {
-            opacity: 1;
-        }
-
-        .movie-card .overlay h3 {
+        .movie-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #fff;
-            transition: text-shadow 0.3s ease;
+            text-align: center;
+            margin-top: 15px;
         }
 
-        .movie-card .overlay p {
+        .movie-card .sinopsis-texto {
             font-size: 0.95rem;
             line-height: 1.6;
-            margin-bottom: 25px;
-            transition: font-size 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .movie-card:hover .overlay h3 {
-            font-size: 1.8rem;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-
-        .movie-card:hover .overlay p {
-            font-size: 1.1rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
         }
 
         .trailer-btn {
@@ -171,6 +146,7 @@
             align-items: center;
             gap: 10px;
             font-weight: bold;
+            margin-top: 15px;
         }
 
         .trailer-btn:hover {
@@ -180,26 +156,6 @@
 
         .trailer-btn::before {
             content: '▶';
-        }
-
-        /* Créditos */
-        .creditos-section {
-            padding: 60px 30px;
-            text-align: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .creditos-section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            opacity: 0.8;
-        }
-
-        .creditos-section p.titulo-creditos {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            color: #fff;
         }
 
         /* Contacto */
@@ -301,10 +257,6 @@
             .peliculas-grid { flex-direction: column; align-items: center; }
             .movie-card { width: 100%; max-width: 350px; }
             .movie-card .afiche-container { height: 480px; }
-            .movie-card .overlay { opacity: 1; background: rgba(0,0,0,0.6); border-radius: 15px; }
-            .movie-card .afiche-container img { filter: brightness(0.7); }
-            .movie-card:hover .overlay h3 { font-size: 1.5rem; }
-            .movie-card:hover .overlay p { font-size: 0.95rem; }
             .contacto-buttons { flex-direction: column; align-items: center; }
             .contacto-btn { width: 250px; justify-content: center; }
         }
@@ -313,13 +265,10 @@
 <body>
     <section class="hero">
         <h1>Trilogía Autoengaño</h1>
-        <p class="protagonizada">Protagonizada por César Troncoso (El Eternauta, Netflix)</p>
+        <p class="protagonizada">Protagonizada por César Troncoso (El Eternauta, Netflix) - Andrea Carballo - Matilde Creimer Chiabrando</p>
+        <p class="direccion">Dirección: Néstor Mazzini. Producción: Paulina Zoboli Casamayor.</p>
         <p class="sinopsis">
-            Trilogía Autoengaño es un proyecto cinematográfico compuesto por tres largamientos interconectados
-            que exploran la violencia, los vínculos familiares y las consecuencias del silencio, desde distintos
-            puntos de vista. Las películas construyen un retrato íntimo y perturbador sobre cómo se instala y se
-            perpetúa la violencia en lo cotidiano. Un thriller dramático de tono íntimo y realista, que propone
-            una experiencia narrativa fragmentada donde cada película resignifica a las otras.
+            Trilogía Autoengaño es un proyecto cinematográfico compuesto por tres largometrajes interconectados que exploran la violencia, los vínculos familiares y las consecuencias del silencio, desde distintos puntos de vista. Las películas construyen un retrato íntimo y perturbador sobre cómo se instala y se perpetúa la violencia en lo cotidiano. Un thriller dramático de tono íntimo y realista, que propone una experiencia narrativa fragmentada donde cada película resignifica a las otras.
         </p>
         <p class="sinopsis">
             La trilogía propone un recorrido inverso, desde las consecuencias hacia el origen del conflicto.
@@ -333,48 +282,36 @@
             <div class="movie-card">
                 <div class="afiche-container">
                     <img src="PELÍCULA 1 - LA MUJER DEL RÍO.jpeg" alt="La Mujer del Río">
-                    <div class="overlay">
-                        <h3>La Mujer del Río</h3>
-                        <p>Érica intenta reconstruir su vida junto a su hija tras un pasado marcado por la violencia. La salida de prisión de su ex pareja reabre heridas que parecían cerradas y la enfrenta nuevamente a un vínculo del que creía haber salido.</p>
-                        <button class="trailer-btn" onclick="playTrailer('PELÍCULA 1 - LA MUJER DEL RÍO_1.mp4')">Ver Trailer</button>
-                    </div>
                 </div>
+                <h3>La Mujer del Río</h3>
+                <p class="sinopsis-texto">Érica intenta reconstruir su vida junto a su hija tras un pasado marcado por la violencia. La salida de prisión de su ex pareja reabre heridas que parecían cerradas y la enfrenta nuevamente a un vínculo del que creía haber salido. Coproducción argentino-uruguaya entre Banda Aparte y Criatura Cine.</p>
+                <button class="trailer-btn" onclick="playTrailer('PELÍCULA 1 - LA MUJER DEL RÍO_1.mp4')">Ver Trailer</button>
             </div>
 
             <div class="movie-card">
                 <div class="afiche-container">
                     <img src="PELÍCULA 2 - CUANDO OSCURECE.jpeg" alt="Cuando Oscurece">
-                    <div class="overlay">
-                        <h3>Cuando Oscurece</h3>
-                        <p>Flor vive entre dos hogares tras la separación de sus padres. Durante un viaje improvisado con su padre, una serie de situaciones la desorientan y perturban. Aislada de su madre, deberá tomar una decisión demasiado arriesgada para su edad.</p>
-                        <button class="trailer-btn" onclick="playTrailer('PELÍCULA 2 - CUANDO OSCURECE.mp4')">Ver Trailer</button>
-                    </div>
                 </div>
+                <h3>Cuando Oscurece</h3>
+                <p class="sinopsis-texto">Flor vive entre dos hogares tras la separación de sus padres. Durante un viaje improvisado con su padre, una serie de situaciones la desorientan y perturban. Aislada de su madre, deberá tomar una decisión demasiado arriesgada para su edad. Producción argentina, Banda Aparte.</p>
+                <button class="trailer-btn" onclick="playTrailer('PELÍCULA 2 - CUANDO OSCURECE.mp4')">Ver Trailer</button>
             </div>
 
             <div class="movie-card">
                 <div class="afiche-container">
                     <img src="PELÍCULA 3 - 36 HORAS.jpeg" alt="36 Horas">
-                    <div class="overlay">
-                        <h3>36 Horas</h3>
-                        <p>Pedro está atrapado por un divorcio que no puede terminar de resolver y en un círculo de deudas en medio de la crisis económica argentina. El día del cumpleaños de su hija recibe un ultimátum de un prestamista que lo obliga a tomar decisiones límite.</p>
-                        <button class="trailer-btn" onclick="playTrailer('PELÍCULA 3 - 36 HORAS_1.mp4')">Ver Trailer</button>
-                    </div>
                 </div>
+                <h3>36 Horas</h3>
+                <p class="sinopsis-texto">Pedro está atrapado por un divorcio que no puede terminar de resolver y en un círculo de deudas en medio de la crisis económica argentina. El día del cumpleaños de su hija recibe un ultimátum de un prestamista que lo obliga a tomar decisiones límite. Producción argentina, Banda Aparte.</p>
+                <button class="trailer-btn" onclick="playTrailer('PELÍCULA 3 - 36 HORAS_1.mp4')">Ver Trailer</button>
             </div>
         </div>
-    </section>
-
-    <section class="creditos-section">
-        <p class="titulo-creditos">Dirección: Néstor Mazzini · Producción: Paulina Zoboli Casamayor</p>
-        <p>Actúan: César Troncoso, Andrea Carballo, Matilde Creimer Chiabrando</p>
     </section>
 
     <section class="contacto-section">
         <h2>Contacto</h2>
         <div class="contacto-buttons">
             <a href="mailto:paulinazoboli@gmail.com" class="contacto-btn email">✉️ Email</a>
-            <a href="tel:+541168901701" class="contacto-btn telefono">📞 Teléfono</a>
             <a href="https://wa.me/541168901701" target="_blank" class="contacto-btn whatsapp">💬 WhatsApp</a>
             <a href="https://instagram.com/banda.aparte" target="_blank" class="contacto-btn instagram">📸 Instagram</a>
         </div>
