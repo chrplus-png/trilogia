@@ -46,6 +46,13 @@
         .hero .direccion {
             color: #fff;
             font-size: 1.1rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .hero .produccion {
+            color: #fff;
+            font-size: 1.1rem;
             margin-bottom: 30px;
             opacity: 0.9;
         }
@@ -74,7 +81,7 @@
 
         /* Sección películas */
         .peliculas-section {
-            padding: 40px 30px;
+            padding: 40px 15px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -98,6 +105,7 @@
         .movie-card {
             width: 350px;
             position: relative;
+            text-align: center;
         }
 
         .movie-card .afiche-container {
@@ -130,32 +138,34 @@
             font-size: 0.95rem;
             line-height: 1.6;
             color: #fff;
-            text-align: center;
+            text-align: justify;
+            padding: 0 10px;
         }
 
         .trailer-btn {
-            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            border: 2px solid #fff;
+            background: transparent;
             color: white;
-            border: none;
             padding: 15px 35px;
             font-size: 1rem;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            display: inline-block;
             font-weight: bold;
             margin-top: 15px;
+            text-align: center;
         }
 
         .trailer-btn:hover {
+            background: #fff;
+            color: #000;
             transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.5);
         }
 
         .trailer-btn::before {
             content: '▶';
+            margin-right: 8px;
         }
 
         /* Contacto */
@@ -254,9 +264,10 @@
             .hero h1 { font-size: 2.2rem; letter-spacing: 6px; }
             .hero .protagonizada { font-size: 1.1rem; }
             .hero .sinopsis { font-size: 1rem; padding: 0 20px; }
-            .peliculas-grid { flex-direction: column; align-items: center; }
+            .peliculas-grid { flex-direction: column; align-items: center; padding: 0 15px; }
             .movie-card { width: 100%; max-width: 350px; }
-            .movie-card .afiche-container { height: 480px; }
+            .movie-card .afiche-container { height: auto; aspect-ratio: 2/3; }
+            .movie-card .afiche-container img { object-fit: cover; height: 100%; }
             .contacto-buttons { flex-direction: column; align-items: center; }
             .contacto-btn { width: 250px; justify-content: center; }
         }
@@ -266,7 +277,8 @@
     <section class="hero">
         <h1>Trilogía Autoengaño</h1>
         <p class="protagonizada">Protagonizada por César Troncoso (El Eternauta, Netflix) - Andrea Carballo - Matilde Creimer Chiabrando</p>
-        <p class="direccion">Dirección: Néstor Mazzini. Producción: Paulina Zoboli Casamayor.</p>
+        <p class="direccion">Dirección: Néstor Mazzini.</p>
+        <p class="produccion">Producción: Paulina Zoboli Casamayor.</p>
         <p class="sinopsis">
             Trilogía Autoengaño es un proyecto cinematográfico compuesto por tres largometrajes interconectados que exploran la violencia, los vínculos familiares y las consecuencias del silencio, desde distintos puntos de vista. Las películas construyen un retrato íntimo y perturbador sobre cómo se instala y se perpetúa la violencia en lo cotidiano. Un thriller dramático de tono íntimo y realista, que propone una experiencia narrativa fragmentada donde cada película resignifica a las otras.
         </p>
