@@ -18,6 +18,32 @@
             overflow-x: hidden;
         }
 
+        /* Menú */
+        .menu {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: opacity 0.3s;
+        }
+
+        .menu a:hover {
+            opacity: 0.7;
+        }
+
         .hero {
             min-height: 100vh;
             display: flex;
@@ -123,10 +149,6 @@
             border-radius: 15px;
         }
 
-        .movie-card .overlay {
-            display: none;
-        }
-
         .movie-card h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
@@ -143,22 +165,28 @@
             padding: 0 10px;
         }
 
-        .trailer-btn {
+        .botones-pelicula {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .trailer-btn, .pelicula-btn {
             border: 2px solid #fff;
             background: transparent;
             color: white;
-            padding: 15px 35px;
-            font-size: 1rem;
+            padding: 10px 20px;
+            font-size: 0.85rem;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: inline-block;
             font-weight: bold;
-            margin-top: 15px;
-            text-align: center;
+            text-decoration: none;
         }
 
-        .trailer-btn:hover {
+        .trailer-btn:hover, .pelicula-btn:hover {
             background: #fff;
             color: #000;
             transform: scale(1.05);
@@ -166,7 +194,63 @@
 
         .trailer-btn::before {
             content: '▶';
-            margin-right: 8px;
+            margin-right: 6px;
+        }
+
+        .pelicula-btn::before {
+            content: '▶';
+            margin-right: 6px;
+        }
+
+        /* Sección Críticas */
+        .criticas-section {
+            padding: 80px 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .criticas-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 50px;
+            color: #fff;
+        }
+
+        .critica-pelicula {
+            margin-bottom: 50px;
+        }
+
+        .critica-pelicula h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .critica-item {
+            margin-bottom: 20px;
+            padding: 0 20px;
+            text-align: justify;
+        }
+
+        .critica-item p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            text-align: justify;
+        }
+
+        .critica-item a {
+            color: #4A90D9;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .critica-item a:hover {
+            color: #7AB3ED;
         }
 
         /* Contacto */
@@ -255,13 +339,9 @@
             color: #e94560;
         }
 
-        @media (max-width: 1200px) {
-            .peliculas-grid { gap: 30px; }
-            .movie-card { width: 300px; }
-            .movie-card .afiche-container { height: 420px; }
-        }
-
         @media (max-width: 768px) {
+            .menu { gap: 20px; padding: 15px; }
+            .menu a { font-size: 0.8rem; letter-spacing: 1px; }
             .hero h1 { font-size: 2.2rem; letter-spacing: 6px; }
             .hero .protagonizada { font-size: 1.1rem; }
             .hero .sinopsis { font-size: 1rem; padding: 0 20px; }
@@ -269,13 +349,21 @@
             .movie-card { width: 100%; max-width: 350px; }
             .movie-card .afiche-container { height: auto; aspect-ratio: 2/3; }
             .movie-card .afiche-container img { object-fit: cover; height: 100%; }
+            .botones-pelicula { flex-direction: column; align-items: center; gap: 8px; }
+            .trailer-btn, .pelicula-btn { width: 180px; justify-content: center; text-align: center; }
             .contacto-buttons { flex-direction: column; align-items: center; }
             .contacto-btn { width: 250px; justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <section class="hero">
+    <nav class="menu">
+        <a href="#inicio">Inicio</a>
+        <a href="#criticas">Críticas</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <section class="hero" id="inicio">
         <h1>Trilogía Autoengaño</h1>
         <p class="protagonizada">Protagonizada por César Troncoso (El Eternauta, Netflix) - Andrea Carballo - Matilde Creimer Chiabrando</p>
         <p class="direccion">Dirección: Néstor Mazzini.</p>
@@ -289,7 +377,7 @@
         <div class="scroll-indicator">↓</div>
     </section>
 
-    <section class="peliculas-section">
+    <section class="peliculas-section" id="peliculas">
         <h2 class="section-title">Las Películas</h2>
         <div class="peliculas-grid">
             <div class="movie-card">
@@ -298,7 +386,10 @@
                 </div>
                 <h3>La Mujer del Río</h3>
                 <p class="sinopsis-texto">Érica intenta reconstruir su vida junto a su hija tras un pasado marcado por la violencia. La salida de prisión de su ex pareja reabre heridas que parecían cerradas y la enfrenta nuevamente a un vínculo del que creía haber salido. Coproducción argentino-uruguaya entre Banda Aparte y Criatura Cine.</p>
-                <button class="trailer-btn" onclick="playTrailer('PELÍCULA 1 - LA MUJER DEL RÍO_1.mp4')">Ver Trailer</button>
+                <div class="botones-pelicula">
+                    <button class="trailer-btn" onclick="playTrailer('PELÍCULA 1 - LA MUJER DEL RÍO_1.mp4')">Ver Trailer</button>
+                    <a href="https://drive.google.com/file/d/1HRL5DstbxKmW9UMV2Sh4dlQYB6ZP3w2A/view" target="_blank" class="pelicula-btn">Ver Película</a>
+                </div>
             </div>
 
             <div class="movie-card">
@@ -307,7 +398,10 @@
                 </div>
                 <h3>Cuando Oscurece</h3>
                 <p class="sinopsis-texto">Flor vive entre dos hogares tras la separación de sus padres. Durante un viaje improvisado con su padre, una serie de situaciones la desorientan y perturban. Aislada de su madre, deberá tomar una decisión demasiado arriesgada para su edad. Producción argentina, Banda Aparte.</p>
-                <button class="trailer-btn" onclick="playTrailer('PELÍCULA 2 - CUANDO OSCURECE.mp4')">Ver Trailer</button>
+                <div class="botones-pelicula">
+                    <button class="trailer-btn" onclick="playTrailer('PELÍCULA 2 - CUANDO OSCURECE.mp4')">Ver Trailer</button>
+                    <a href="https://drive.google.com/file/d/1G3w_obwqe8cEo2hZU9Y4JyNj4gNMgaLC/view" target="_blank" class="pelicula-btn">Ver Película</a>
+                </div>
             </div>
 
             <div class="movie-card">
@@ -316,12 +410,87 @@
                 </div>
                 <h3>36 Horas</h3>
                 <p class="sinopsis-texto">Pedro está atrapado por un divorcio que no puede terminar de resolver y en un círculo de deudas en medio de la crisis económica argentina. El día del cumpleaños de su hija recibe un ultimátum de un prestamista que lo obliga a tomar decisiones límite. Producción argentina, Banda Aparte.</p>
-                <button class="trailer-btn" onclick="playTrailer('PELÍCULA 3 - 36 HORAS_1.mp4')">Ver Trailer</button>
+                <div class="botones-pelicula">
+                    <button class="trailer-btn" onclick="playTrailer('PELÍCULA 3 - 36 HORAS_1.mp4')">Ver Trailer</button>
+                    <a href="https://drive.google.com/file/d/1YauoYF4NOIKLlhUEa0IfiJ_-K0x_vp4k/view" target="_blank" class="pelicula-btn">Ver Película</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="contacto-section">
+    <section class="criticas-section" id="criticas">
+        <h2>Críticas</h2>
+
+        <div class="critica-pelicula">
+            <h3>La mujer del río</h3>
+            <div class="critica-item">
+                <p>"Un thriller arrollador, tenso y asfixiante, que construye un drama familiar de enorme intensidad."</p>
+                <a href="https://www.escribiendocine.com/noticias/2026/04/03/19492-critica-de-la-mujer-del-rio-nestor-mazzini-y-un-potente-cierre-de-trilogia-a-la-inversa" target="_blank">— EscribiendoCine</a>
+            </div>
+            <div class="critica-item">
+                <p>"Una película potente y brutal, que aborda sin concesiones la violencia de género."</p>
+                <a href="https://www.micropsiacine.com/2026/04/estrenos-critica-de-la-mujer-del-rio-de-nestor-mazzini/" target="_blank">— Micropsia</a>
+            </div>
+            <div class="critica-item">
+                <p>"Incómoda, seca y urgente: una radiografía lúcida de la violencia cotidiana."</p>
+                <a href="https://caligari.com.ar/la-mujer-del-rio-2025-de-nestor-mazzini/" target="_blank">— Caligari</a>
+            </div>
+            <div class="critica-item">
+                <p>"Un relato doliente e incómodo, atravesado por una tensión constante."</p>
+                <a href="https://www.otroscines.com/nota-21267-critica-de-la-mujer-de-rio-pelicula-de-nestor-mazzini-c" target="_blank">— Otros Cines</a>
+            </div>
+            <div class="critica-item">
+                <p>"Un retrato tan silencioso como aturdidor sobre la violencia de género."</p>
+                <a href="https://www.ambito.com/espectaculos/la-mujer-del-rio-un-retrato-tan-silencioso-como-aturdidor-la-violencia-genero-n6264811" target="_blank">— Ámbito</a>
+            </div>
+            <div class="critica-item">
+                <p>"Un thriller íntimo y emocional que retrata cómo se instala la violencia en una pareja."</p>
+                <a href="https://www.pagina12.com.ar/2026/04/10/nestor-mazzini-ojala-esta-pelicula-sirva-para-reflexionar/" target="_blank">— Página/12</a>
+            </div>
+        </div>
+
+        <div class="critica-pelicula">
+            <h3>Cuando oscurece</h3>
+            <div class="critica-item">
+                <p>"Un conflicto familiar abordado desde el thriller psicológico, trabajado con una fuerte impronta visual."</p>
+                <a href="https://www.escribiendocine.com/noticias/2022/11/25/15043-critica-de-cuando-oscurece-nestor-mazzini-y-un-conflicto-familiar-con-elementos-del-thriller" target="_blank">— EscribiendoCine</a>
+            </div>
+            <div class="critica-item">
+                <p>"Una historia atractiva sostenida por el vínculo entre padre e hija, con una actuación revelación."</p>
+                <a href="https://www.pagina12.com.ar/501074-cuando-oscurece-padre-e-hija-en-fuga/" target="_blank">— Página/12</a>
+            </div>
+            <div class="critica-item">
+                <p>"Un relato de tensión creciente que transforma un viaje en una experiencia inquietante."</p>
+                <a href="https://cinefreaks.net/2022/11/23/cuando-oscurece-hijos-y-rehenes/" target="_blank">— CineFreaks</a>
+            </div>
+            <div class="critica-item">
+                <p>"Un descenso a la desesperación construido desde una puesta sobria y efectiva."</p>
+                <a href="https://solofuialcine.com/resena-cuando-oscurece-de-nestor-mazzini/" target="_blank">— Solo Fui al Cine</a>
+            </div>
+        </div>
+
+        <div class="critica-pelicula">
+            <h3>36 Horas</h3>
+            <div class="critica-item">
+                <p>"Un thriller psicológico cargado de atmósferas y tensión, que sumerge al espectador en un verdadero laberinto sin salida."</p>
+                <a href="https://www.escribiendocine.com/noticias/2021/10/27/13814-critica-de-36-horas-o-la-cronica-del-agobio-por-nestor-mazzini" target="_blank">— EscribiendoCine</a>
+            </div>
+            <div class="critica-item">
+                <p>"Una narración claustrofóbica sostenida por sólidas actuaciones, que retrata con precisión la desesperación de su protagonista."</p>
+                <a href="https://www.leercine.com.ar/36-horas/" target="_blank">— LeerCine</a>
+            </div>
+            <div class="critica-item">
+                <p>"Un film tenso, narrado con inteligencia y precisión, que aborda temas complejos sin subrayados."</p>
+                <a href="https://www.funcinema.com.ar/2021/11/36-horas/" target="_blank">— Funcinema</a>
+            </div>
+            <div class="critica-item">
+                <p>"Un retrato del estrés contemporáneo llevado al límite, donde la presión económica se vuelve asfixiante."</p>
+                <a href="https://brecha.com.uy/estres-potenciado/" target="_blank">— Brecha</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contacto-section" id="contacto">
         <h2>Contacto</h2>
         <div class="contacto-buttons">
             <a href="mailto:paulinazoboli@gmail.com" class="contacto-btn email">✉️ Email</a>
