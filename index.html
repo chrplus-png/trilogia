@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trilogía Autoengaño</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital@0;1&display=swap"
-        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,58 +11,11 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #000;
             color: #fff;
             overflow-x: hidden;
-        }
-
-        /* Partículas de fondo */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: float 15s infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-100vh) rotate(720deg);
-                opacity: 0;
-            }
         }
 
         /* Menú */
@@ -76,21 +25,10 @@
             display: flex;
             justify-content: center;
             gap: 40px;
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
             z-index: 100;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transform: translateY(-100%);
-            animation: slideDown 0.8s ease forwards;
-            animation-delay: 0.5s;
-        }
-
-        @keyframes slideDown {
-            to {
-                transform: translateY(0);
-            }
         }
 
         .menu a {
@@ -99,30 +37,13 @@
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #fff;
-            transition: width 0.4s ease;
+            transition: opacity 0.3s;
         }
 
         .menu a:hover {
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
-        .menu a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -131,8 +52,6 @@
             align-items: center;
             text-align: center;
             padding: 40px 30px;
-            position: relative;
-            z-index: 1;
         }
 
         .hero h1 {
@@ -141,21 +60,6 @@
             letter-spacing: 12px;
             margin-bottom: 30px;
             color: #fff;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-            animation-delay: 0.3s;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .hero .protagonizada {
@@ -163,27 +67,20 @@
             font-size: 1.3rem;
             margin-bottom: 15px;
             font-weight: bold;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-            animation-delay: 0.6s;
         }
 
         .hero .direccion {
             color: #fff;
             font-size: 1.1rem;
             margin-bottom: 10px;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-            animation-delay: 0.8s;
+            opacity: 0.9;
         }
 
         .hero .produccion {
             color: #fff;
             font-size: 1.1rem;
             margin-bottom: 30px;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-            animation-delay: 1s;
+            opacity: 0.9;
         }
 
         .hero .sinopsis {
@@ -191,17 +88,8 @@
             line-height: 1.9;
             max-width: 800px;
             margin-bottom: 20px;
-            opacity: 0;
+            opacity: 0.9;
             text-align: justify;
-            animation: fadeInUp 1s ease forwards;
-        }
-
-        .hero .sinopsis:nth-child(5) {
-            animation-delay: 1.2s;
-        }
-
-        .hero .sinopsis:nth-child(6) {
-            animation-delay: 1.4s;
         }
 
         .scroll-indicator {
@@ -209,68 +97,20 @@
             bottom: 40px;
             font-size: 2rem;
             color: #fff;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards, bounce 2s infinite;
-            animation-delay: 1.8s, 2s;
+            animation: bounce 2s infinite;
         }
 
         @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-15px);
-            }
-
-            60% {
-                transform: translateY(-8px);
-            }
-        }
-
-        /* Líneas decorativas animadas */
-        .hero::before,
-        .hero::after {
-            content: '';
-            position: absolute;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            height: 1px;
-            width: 200px;
-            animation: lineExpand 2s ease forwards;
-            animation-delay: 2s;
-        }
-
-        .hero::before {
-            top: 30%;
-            left: 50%;
-            transform: translateX(-50%) scaleX(0);
-        }
-
-        .hero::after {
-            bottom: 30%;
-            left: 50%;
-            transform: translateX(-50%) scaleX(0);
-        }
-
-        @keyframes lineExpand {
-            to {
-                transform: translateX(-50%) scaleX(3);
-                opacity: 0;
-            }
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-8px); }
         }
 
         /* Sección películas */
         .peliculas-section {
-            padding: 80px 15px;
+            padding: 40px 15px;
             max-width: 1200px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
 
         .section-title {
@@ -278,22 +118,14 @@
             font-size: 2rem;
             text-transform: uppercase;
             letter-spacing: 5px;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             color: #fff;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .section-title.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .peliculas-grid {
             display: flex;
             justify-content: center;
-            gap: 50px;
+            gap: 40px;
             flex-wrap: wrap;
         }
 
@@ -301,26 +133,6 @@
             width: 350px;
             position: relative;
             text-align: center;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .movie-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .movie-card:nth-child(1) {
-            transition-delay: 0.2s;
-        }
-
-        .movie-card:nth-child(2) {
-            transition-delay: 0.4s;
-        }
-
-        .movie-card:nth-child(3) {
-            transition-delay: 0.6s;
         }
 
         .movie-card .afiche-container {
@@ -328,13 +140,6 @@
             overflow: hidden;
             border-radius: 15px;
             height: 500px;
-            box-shadow: 0 0 0 rgba(255, 255, 255, 0);
-            transition: all 0.5s ease;
-        }
-
-        .movie-card:hover .afiche-container {
-            box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
-            transform: scale(1.02);
         }
 
         .movie-card .afiche-container img {
@@ -342,16 +147,6 @@
             height: 100%;
             object-fit: cover;
             border-radius: 15px;
-            transition: all 0.6s ease;
-            filter: brightness(1);
-        }
-
-        .movie-card:hover .afiche-container img {
-            transform: scale(1.05);
-        }
-
-        .movie-card.dimmed .afiche-container img {
-            filter: brightness(0.4);
         }
 
         .movie-card h3 {
@@ -360,12 +155,6 @@
             color: #fff;
             text-align: center;
             margin-top: 15px;
-            transition: all 0.4s ease;
-        }
-
-        .movie-card:hover h3 {
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-            letter-spacing: 3px;
         }
 
         .movie-card .sinopsis-texto {
@@ -374,11 +163,6 @@
             color: #fff;
             text-align: justify;
             padding: 0 10px;
-            transition: all 0.4s ease;
-        }
-
-        .movie-card:hover .sinopsis-texto {
-            transform: translateY(-5px);
         }
 
         .botones-pelicula {
@@ -386,11 +170,9 @@
             justify-content: center;
             gap: 10px;
             margin-top: 15px;
-            perspective: 1000px;
         }
 
-        .trailer-btn,
-        .pelicula-btn {
+        .trailer-btn, .pelicula-btn {
             border: 2px solid #fff;
             background: transparent;
             color: white;
@@ -398,69 +180,33 @@
             font-size: 0.85rem;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             display: inline-block;
             font-weight: bold;
             text-decoration: none;
-            position: relative;
-            overflow: hidden;
         }
 
-        .trailer-btn::before,
+        .trailer-btn:hover, .pelicula-btn:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .trailer-btn::before {
+            content: '▶';
+            margin-right: 6px;
+        }
+
         .pelicula-btn::before {
             content: '▶';
             margin-right: 6px;
         }
 
-        .trailer-btn:hover,
-        .pelicula-btn:hover {
-            background: #fff;
-            color: #000;
-            transform: scale(1.1) rotateX(10deg);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
-        }
-
-        /* Efecto de brillo en hover */
-        .trailer-btn::after,
-        .pelicula-btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.1),
-                    transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
-            opacity: 0;
-        }
-
-        .trailer-btn:hover::after,
-        .pelicula-btn:hover::after {
-            opacity: 1;
-            animation: shine 0.8s ease;
-        }
-
-        @keyframes shine {
-            from {
-                left: -100%;
-            }
-
-            to {
-                left: 100%;
-            }
-        }
-
         /* Sección Críticas */
         .criticas-section {
-            padding: 100px 30px;
+            padding: 80px 30px;
             max-width: 1000px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
 
         .criticas-section h2 {
@@ -468,130 +214,64 @@
             font-size: 2rem;
             text-transform: uppercase;
             letter-spacing: 5px;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             color: #fff;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .criticas-section h2.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .critica-pelicula {
-            margin-bottom: 60px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .critica-pelicula.visible {
-            opacity: 1;
-            transform: translateY(0);
+            margin-bottom: 50px;
         }
 
         .critica-pelicula h3 {
-            font-size: 1.4rem;
-            margin-bottom: 25px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
             color: #fff;
             text-align: center;
-            position: relative;
-        }
-
-        .critica-pelicula h3::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: #fff;
-            transition: width 0.4s ease;
-        }
-
-        .critica-pelicula:hover h3::after {
-            width: 100px;
         }
 
         .critica-item {
-            margin-bottom: 25px;
-            padding: 20px;
-            border-left: 2px solid transparent;
-            transition: all 0.4s ease;
+            margin-bottom: 20px;
+            padding: 0 20px;
             text-align: justify;
-        }
-
-        .critica-item:hover {
-            border-left-color: #fff;
-            background: rgba(255, 255, 255, 0.05);
-            padding-left: 30px;
         }
 
         .critica-item p {
             font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 10px;
-            font-style: italic;
-            transition: all 0.3s ease;
-        }
-
-        .critica-item:hover p {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            line-height: 1.6;
+            margin-bottom: 8px;
+            text-align: justify;
         }
 
         .critica-item a {
             color: #4A90D9;
             font-size: 0.9rem;
             text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
+            transition: color 0.3s;
         }
 
         .critica-item a:hover {
             color: #7AB3ED;
-            text-shadow: 0 0 10px rgba(74, 144, 217, 0.5);
         }
 
         /* Contacto */
         .contacto-section {
-            padding: 100px 30px;
+            padding: 80px 30px;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
 
         .contacto-section h2 {
             font-size: 1.8rem;
             text-transform: uppercase;
             letter-spacing: 5px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             color: #fff;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .contacto-section h2.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .contacto-buttons {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
             flex-wrap: wrap;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .contacto-buttons.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .contacto-btn {
@@ -603,29 +283,22 @@
             text-decoration: none;
             font-size: 1rem;
             font-weight: bold;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             border: 2px solid #fff;
             color: #fff;
             background: transparent;
-            position: relative;
-            overflow: hidden;
         }
 
         .contacto-btn:hover {
             background: #fff;
             color: #000;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
         }
 
-        /* Footer */
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             opacity: 0.5;
             font-size: 0.9rem;
-            position: relative;
-            z-index: 1;
         }
 
         /* Modal */
@@ -640,25 +313,16 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.4s ease;
         }
 
         .modal.active {
             display: flex;
-            opacity: 1;
         }
 
         .modal video {
             max-width: 90%;
             max-height: 90%;
             border-radius: 10px;
-            transform: scale(0.8);
-            transition: transform 0.4s ease;
-        }
-
-        .modal.active video {
-            transform: scale(1);
         }
 
         .modal .close-btn {
@@ -668,116 +332,31 @@
             font-size: 3rem;
             color: white;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: color 0.3s;
         }
 
         .modal .close-btn:hover {
             color: #e94560;
-            transform: rotate(90deg);
         }
 
-        /* Cursor personalizado */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.15s ease;
-            mix-blend-mode: difference;
-        }
-
-        .cursor.hover {
-            transform: scale(2);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .menu {
-                gap: 20px;
-                padding: 15px;
-            }
-
-            .menu a {
-                font-size: 0.75rem;
-                letter-spacing: 1px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-                letter-spacing: 6px;
-            }
-
-            .hero .protagonizada {
-                font-size: 1rem;
-            }
-
-            .hero .sinopsis {
-                font-size: 1rem;
-                padding: 0 20px;
-            }
-
-            .peliculas-grid {
-                flex-direction: column;
-                align-items: center;
-                padding: 0 15px;
-            }
-
-            .movie-card {
-                width: 100%;
-                max-width: 350px;
-            }
-
-            .movie-card .afiche-container {
-                height: auto;
-                aspect-ratio: 2/3;
-            }
-
-            .movie-card .afiche-container img {
-                object-fit: cover;
-                height: 100%;
-            }
-
-            .botones-pelicula {
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
-            }
-
-            .trailer-btn,
-            .pelicula-btn {
-                width: 180px;
-                justify-content: center;
-                text-align: center;
-            }
-
-            .contacto-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .contacto-btn {
-                width: 250px;
-                justify-content: center;
-            }
-
-            .cursor {
-                display: none;
-            }
+            .menu { gap: 20px; padding: 15px; }
+            .menu a { font-size: 0.8rem; letter-spacing: 1px; }
+            .hero h1 { font-size: 2.2rem; letter-spacing: 6px; }
+            .hero .protagonizada { font-size: 1.1rem; }
+            .hero .sinopsis { font-size: 1rem; padding: 0 20px; }
+            .peliculas-grid { flex-direction: column; align-items: center; padding: 0 15px; }
+            .movie-card { width: 100%; max-width: 350px; }
+            .movie-card .afiche-container { height: auto; aspect-ratio: 2/3; }
+            .movie-card .afiche-container img { object-fit: cover; height: 100%; }
+            .botones-pelicula { flex-direction: column; align-items: center; gap: 8px; }
+            .trailer-btn, .pelicula-btn { width: 180px; justify-content: center; text-align: center; }
+            .contacto-buttons { flex-direction: column; align-items: center; }
+            .contacto-btn { width: 250px; justify-content: center; }
         }
     </style>
 </head>
-
 <body>
-    <!-- Partículas -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Cursor personalizado -->
-    <div class="cursor" id="cursor"></div>
-
     <nav class="menu">
         <a href="#inicio">Inicio</a>
         <a href="#criticas">Críticas</a>
@@ -786,16 +365,11 @@
 
     <section class="hero" id="inicio">
         <h1>Trilogía Autoengaño</h1>
-        <p class="protagonizada">Protagonizada por César Troncoso (El Eternauta, Netflix) - Andrea Carballo - Matilde
-            Creimer Chiabrando</p>
+        <p class="protagonizada">Protagonizada por César Troncoso (El Eternauta, Netflix) - Andrea Carballo - Matilde Creimer Chiabrando</p>
         <p class="direccion">Dirección: Néstor Mazzini.</p>
         <p class="produccion">Producción: Paulina Zoboli Casamayor.</p>
         <p class="sinopsis">
-            Trilogía Autoengaño es un proyecto cinematográfico compuesto por tres largometrajes interconectados que
-            exploran la violencia, los vínculos familiares y las consecuencias del silencio, desde distintos puntos de
-            vista. Las películas construyen un retrato íntimo y perturbador sobre cómo se instala y se perpetúa la
-            violencia en lo cotidiano. Un thriller dramático de tono íntimo y realista, que propone una experiencia
-            narrativa fragmentada donde cada película resignifica a las otras.
+            Trilogía Autoengaño es un proyecto cinematográfico compuesto por tres largometrajes interconectados que exploran la violencia, los vínculos familiares y las consecuencias del silencio, desde distintos puntos de vista. Las películas construyen un retrato íntimo y perturbador sobre cómo se instala y se perpetúa la violencia en lo cotidiano. Un thriller dramático de tono íntimo y realista, que propone una experiencia narrativa fragmentada donde cada película resignifica a las otras.
         </p>
         <p class="sinopsis">
             La trilogía propone un recorrido inverso, desde las consecuencias hacia el origen del conflicto.
@@ -811,15 +385,10 @@
                     <img src="PELÍCULA 1 - LA MUJER DEL RÍO.jpeg" alt="La Mujer del Río">
                 </div>
                 <h3>La Mujer del Río</h3>
-                <p class="sinopsis-texto">Érica intenta reconstruir su vida junto a su hija tras un pasado marcado por
-                    la violencia. La salida de prisión de su ex pareja reabre heridas que parecían cerradas y la
-                    enfrenta nuevamente a un vínculo del que creía haber salido. Coproducción argentino-uruguaya entre
-                    Banda Aparte y Criatura Cine.</p>
+                <p class="sinopsis-texto">Érica intenta reconstruir su vida junto a su hija tras un pasado marcado por la violencia. La salida de prisión de su ex pareja reabre heridas que parecían cerradas y la enfrenta nuevamente a un vínculo del que creía haber salido. Coproducción argentino-uruguaya entre Banda Aparte y Criatura Cine.</p>
                 <div class="botones-pelicula">
-                    <button class="trailer-btn" onclick="playTrailer('PELÍCULA 1 - LA MUJER DEL RÍO_1.mp4')">Ver
-                        Trailer</button>
-                    <a href="https://drive.google.com/file/d/1HRL5DstbxKmW9UMV2Sh4dlQYB6ZP3w2A/view" target="_blank"
-                        class="pelicula-btn">Ver Película</a>
+                    <button class="trailer-btn" onclick="playTrailer('PELÍCULA 1 - LA MUJER DEL RÍO_1.mp4')">Ver Trailer</button>
+                    <a href="https://drive.google.com/file/d/1HRL5DstbxKmW9UMV2Sh4dlQYB6ZP3w2A/view" target="_blank" class="pelicula-btn">Ver Película</a>
                 </div>
             </div>
 
@@ -828,14 +397,10 @@
                     <img src="PELÍCULA 2 - CUANDO OSCURECE.jpeg" alt="Cuando Oscurece">
                 </div>
                 <h3>Cuando Oscurece</h3>
-                <p class="sinopsis-texto">Flor vive entre dos hogares tras la separación de sus padres. Durante un viaje
-                    improvisado con su padre, una serie de situaciones la desorientan y perturban. Aislada de su madre,
-                    deberá tomar una decisión demasiado arriesgada para su edad. Producción argentina, Banda Aparte.</p>
+                <p class="sinopsis-texto">Flor vive entre dos hogares tras la separación de sus padres. Durante un viaje improvisado con su padre, una serie de situaciones la desorientan y perturban. Aislada de su madre, deberá tomar una decisión demasiado arriesgada para su edad. Producción argentina, Banda Aparte.</p>
                 <div class="botones-pelicula">
-                    <button class="trailer-btn" onclick="playTrailer('PELÍCULA 2 - CUANDO OSCURECE.mp4')">Ver
-                        Trailer</button>
-                    <a href="https://drive.google.com/file/d/1G3w_obwqe8cEo2hZU9Y4JyNj4gNMgaLC/view" target="_blank"
-                        class="pelicula-btn">Ver Película</a>
+                    <button class="trailer-btn" onclick="playTrailer('PELÍCULA 2 - CUANDO OSCURECE.mp4')">Ver Trailer</button>
+                    <a href="https://drive.google.com/file/d/1G3w_obwqe8cEo2hZU9Y4JyNj4gNMgaLC/view" target="_blank" class="pelicula-btn">Ver Película</a>
                 </div>
             </div>
 
@@ -844,15 +409,10 @@
                     <img src="PELÍCULA 3 - 36 HORAS.jpeg" alt="36 Horas">
                 </div>
                 <h3>36 Horas</h3>
-                <p class="sinopsis-texto">Pedro está atrapado por un divorcio que no puede terminar de resolver y en un
-                    círculo de deudas en medio de la crisis económica argentina. El día del cumpleaños de su hija recibe
-                    un ultimátum de un prestamista que lo obliga a tomar decisiones límite. Producción argentina, Banda
-                    Aparte.</p>
+                <p class="sinopsis-texto">Pedro está atrapado por un divorcio que no puede terminar de resolver y en un círculo de deudas en medio de la crisis económica argentina. El día del cumpleaños de su hija recibe un ultimátum de un prestamista que lo obliga a tomar decisiones límite. Producción argentina, Banda Aparte.</p>
                 <div class="botones-pelicula">
-                    <button class="trailer-btn" onclick="playTrailer('PELÍCULA 3 - 36 HORAS_1.mp4')">Ver
-                        Trailer</button>
-                    <a href="https://drive.google.com/file/d/1YauoYF4NOIKLlhUEa0IfiJ_-K0x_vp4k/view" target="_blank"
-                        class="pelicula-btn">Ver Película</a>
+                    <button class="trailer-btn" onclick="playTrailer('PELÍCULA 3 - 36 HORAS_1.mp4')">Ver Trailer</button>
+                    <a href="https://drive.google.com/file/d/1YauoYF4NOIKLlhUEa0IfiJ_-K0x_vp4k/view" target="_blank" class="pelicula-btn">Ver Película</a>
                 </div>
             </div>
         </div>
@@ -864,75 +424,59 @@
         <div class="critica-pelicula">
             <h3>La mujer del río</h3>
             <div class="critica-item">
-                <p>"Un thriller arrollador, tenso y asfixiante, que construye un drama familiar de enorme intensidad."
-                </p>
-                <a href="https://www.escribiendocine.com/noticias/2026/04/03/19492-critica-de-la-mujer-del-rio-nestor-mazzini-y-un-potente-cierre-de-trilogia-a-la-inversa"
-                    target="_blank">— EscribiendoCine</a>
+                <p>"Un thriller arrollador, tenso y asfixiante, que construye un drama familiar de enorme intensidad."</p>
+                <a href="https://www.escribiendocine.com/noticias/2026/04/03/19492-critica-de-la-mujer-del-rio-nestor-mazzini-y-un-potente-cierre-de-trilogia-a-la-inversa" target="_blank">— EscribiendoCine</a>
             </div>
             <div class="critica-item">
                 <p>"Una película potente y brutal, que aborda sin concesiones la violencia de género."</p>
-                <a href="https://www.micropsiacine.com/2026/04/estrenos-critica-de-la-mujer-del-rio-de-nestor-mazzini/"
-                    target="_blank">— Micropsia</a>
+                <a href="https://www.micropsiacine.com/2026/04/estrenos-critica-de-la-mujer-del-rio-de-nestor-mazzini/" target="_blank">— Micropsia</a>
             </div>
             <div class="critica-item">
                 <p>"Incómoda, seca y urgente: una radiografía lúcida de la violencia cotidiana."</p>
-                <a href="https://caligari.com.ar/la-mujer-del-rio-2025-de-nestor-mazzini/" target="_blank">—
-                    Caligari</a>
+                <a href="https://caligari.com.ar/la-mujer-del-rio-2025-de-nestor-mazzini/" target="_blank">— Caligari</a>
             </div>
             <div class="critica-item">
                 <p>"Un relato doliente e incómodo, atravesado por una tensión constante."</p>
-                <a href="https://www.otroscines.com/nota-21267-critica-de-la-mujer-de-rio-pelicula-de-nestor-mazzini-c"
-                    target="_blank">— Otros Cines</a>
+                <a href="https://www.otroscines.com/nota-21267-critica-de-la-mujer-de-rio-pelicula-de-nestor-mazzini-c" target="_blank">— Otros Cines</a>
             </div>
             <div class="critica-item">
                 <p>"Un retrato tan silencioso como aturdidor sobre la violencia de género."</p>
-                <a href="https://www.ambito.com/espectaculos/la-mujer-del-rio-un-retrato-tan-silencioso-como-aturdidor-la-violencia-genero-n6264811"
-                    target="_blank">— Ámbito</a>
+                <a href="https://www.ambito.com/espectaculos/la-mujer-del-rio-un-retrato-tan-silencioso-como-aturdidor-la-violencia-genero-n6264811" target="_blank">— Ámbito</a>
             </div>
             <div class="critica-item">
                 <p>"Un thriller íntimo y emocional que retrata cómo se instala la violencia en una pareja."</p>
-                <a href="https://www.pagina12.com.ar/2026/04/10/nestor-mazzini-ojala-esta-pelicula-sirva-para-reflexionar/"
-                    target="_blank">— Página/12</a>
+                <a href="https://www.pagina12.com.ar/2026/04/10/nestor-mazzini-ojala-esta-pelicula-sirva-para-reflexionar/" target="_blank">— Página/12</a>
             </div>
         </div>
 
         <div class="critica-pelicula">
             <h3>Cuando oscurece</h3>
             <div class="critica-item">
-                <p>"Un conflicto familiar abordado desde el thriller psicológico, trabajado con una fuerte impronta
-                    visual."</p>
-                <a href="https://www.escribiendocine.com/noticias/2022/11/25/15043-critica-de-cuando-oscurece-nestor-mazzini-y-un-conflicto-familiar-con-elementos-del-thriller"
-                    target="_blank">— EscribiendoCine</a>
+                <p>"Un conflicto familiar abordado desde el thriller psicológico, trabajado con una fuerte impronta visual."</p>
+                <a href="https://www.escribiendocine.com/noticias/2022/11/25/15043-critica-de-cuando-oscurece-nestor-mazzini-y-un-conflicto-familiar-con-elementos-del-thriller" target="_blank">— EscribiendoCine</a>
             </div>
             <div class="critica-item">
-                <p>"Una historia atractiva sostenida por el vínculo entre padre e hija, con una actuación revelación."
-                </p>
-                <a href="https://www.pagina12.com.ar/501074-cuando-oscurece-padre-e-hija-en-fuga/" target="_blank">—
-                    Página/12</a>
+                <p>"Una historia atractiva sostenida por el vínculo entre padre e hija, con una actuación revelación."</p>
+                <a href="https://www.pagina12.com.ar/501074-cuando-oscurece-padre-e-hija-en-fuga/" target="_blank">— Página/12</a>
             </div>
             <div class="critica-item">
                 <p>"Un relato de tensión creciente que transforma un viaje en una experiencia inquietante."</p>
-                <a href="https://cinefreaks.net/2022/11/23/cuando-oscurece-hijos-y-rehenes/" target="_blank">—
-                    CineFreaks</a>
+                <a href="https://cinefreaks.net/2022/11/23/cuando-oscurece-hijos-y-rehenes/" target="_blank">— CineFreaks</a>
             </div>
             <div class="critica-item">
                 <p>"Un descenso a la desesperación construido desde una puesta sobria y efectiva."</p>
-                <a href="https://solofuialcine.com/resena-cuando-oscurece-de-nestor-mazzini/" target="_blank">— Solo Fui
-                    al Cine</a>
+                <a href="https://solofuialcine.com/resena-cuando-oscurece-de-nestor-mazzini/" target="_blank">— Solo Fui al Cine</a>
             </div>
         </div>
 
         <div class="critica-pelicula">
             <h3>36 Horas</h3>
             <div class="critica-item">
-                <p>"Un thriller psicológico cargado de atmósferas y tensión, que sumerge al espectador en un verdadero
-                    laberinto sin salida."</p>
-                <a href="https://www.escribiendocine.com/noticias/2021/10/27/13814-critica-de-36-horas-o-la-cronica-del-agobio-por-nestor-mazzini"
-                    target="_blank">— EscribiendoCine</a>
+                <p>"Un thriller psicológico cargado de atmósferas y tensión, que sumerge al espectador en un verdadero laberinto sin salida."</p>
+                <a href="https://www.escribiendocine.com/noticias/2021/10/27/13814-critica-de-36-horas-o-la-cronica-del-agobio-por-nestor-mazzini" target="_blank">— EscribiendoCine</a>
             </div>
             <div class="critica-item">
-                <p>"Una narración claustrofóbica sostenida por sólidas actuaciones, que retrata con precisión la
-                    desesperación de su protagonista."</p>
+                <p>"Una narración claustrofóbica sostenida por sólidas actuaciones, que retrata con precisión la desesperación de su protagonista."</p>
                 <a href="https://www.leercine.com.ar/36-horas/" target="_blank">— LeerCine</a>
             </div>
             <div class="critica-item">
@@ -940,9 +484,8 @@
                 <a href="https://www.funcinema.com.ar/2021/11/36-horas/" target="_blank">— Funcinema</a>
             </div>
             <div class="critica-item">
-                <p>"Un retrato del estrés contemporáneo llevado al límite, donde la presión económica se vuelve
-                    asfixiante."</p>
-                <a href="https://brecha.com.uy/estes-potenciado/" target="_blank">— Brecha</a>
+                <p>"Un retrato del estrés contemporáneo llevado al límite, donde la presión económica se vuelve asfixiante."</p>
+                <a href="https://brecha.com.uy/estres-potenciado/" target="_blank">— Brecha</a>
             </div>
         </div>
     </section>
@@ -966,64 +509,6 @@
     </div>
 
     <script>
-        // Partículas flotantes
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
-            particle.style.animationDelay = (Math.random() * 10) + 's';
-            particle.style.width = (Math.random() * 4 + 2) + 'px';
-            particle.style.height = particle.style.width;
-            particlesContainer.appendChild(particle);
-        }
-
-        // Cursor personalizado
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX - 10 + 'px';
-            cursor.style.top = e.clientY - 10 + 'px';
-        });
-
-        document.querySelectorAll('a, button, .movie-card').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-
-        // Focus effect on movie cards
-        document.querySelectorAll('.movie-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                document.querySelectorAll('.movie-card').forEach(c => {
-                    if (c !== card) c.classList.add('dimmed');
-                });
-            });
-            card.addEventListener('mouseleave', () => {
-                document.querySelectorAll('.movie-card').forEach(c => {
-                    c.classList.remove('dimmed');
-                });
-            });
-        });
-
-        // Animaciones al hacer scroll (Intersection Observer)
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.section-title, .movie-card, .critica-pelicula, .criticas-section h2, .contacto-section h2, .contacto-buttons').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Modal
         const modal = document.getElementById('trailerModal');
         const videoPlayer = document.getElementById('videoPlayer');
 
@@ -1039,14 +524,13 @@
             modal.classList.remove('active');
         }
 
-        modal.addEventListener('click', function (e) {
+        modal.addEventListener('click', function(e) {
             if (e.target === modal) closeModal();
         });
 
-        document.addEventListener('keydown', function (e) {
+        document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeModal();
         });
     </script>
 </body>
-
 </html>
